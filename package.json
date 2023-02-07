@@ -1,11 +1,12 @@
 {
-  "name": "to-doList",
+  "name": "to-do",
   "version": "1.0.0",
   "description": "this is a simple application",
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon app.js"
+    "test": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
