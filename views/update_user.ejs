@@ -1,0 +1,83 @@
+
+<!-- header-->
+<%- include('include/_header') %>
+
+  <!-- Main Site -->
+  <main>
+    <div">
+        <div>
+           <div>
+               <a href="/"><i class="fas fa-angle-double-left"></i> All Users</a>
+           </div>
+        </div>
+        <div>
+            <h2 class="text-dark">Update User</h2>
+            <span class="text-light">Use the form below to Update an account</span>
+        </div>
+
+        <!-- add user form -->
+         <!-- form handling -->
+ <form method="POST" id="update_user">
+    <div>
+        <div class="form-group">
+            <label for="first name" class="text-light">First Name</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="name" value="" placeholder="first name">
+        </div>
+        <div class="form-group">
+            <label for="Last name" class="text-light">Last Name</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="name" value="" placeholder="Last name">
+        </div>
+        <div class="form-group">
+            <label for="Email" class="text-light">Email</label>
+            <input type="text" name="email" value="" placeholder="example@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="gender" class="text-light">Gender</label>
+            <div class="radio inline">
+                <input type="radio" id="radio-2" name="gender" value="Male" >
+                <label for="radio-2" class="radio-label">Male</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-3" name="gender" value="Female" >
+                <label for="radio-3" class="radio-label">Female</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Email" class="text-light">Task</label>
+            <input type="text" name="email" value="" placeholder="add task">
+        </div>
+        <div class="form-group">
+            <label for="gender" class="text-light">c\Category</label>
+            <div class="radio inline">
+                <input type="radio" id="radio-2" name="category" value="Personal" >
+                <label for="radio-2" class="radio-label">Personal</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-3" name="gender" value="Work" >
+                <label for="radio-3" class="radio-label">Work</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gender" class="text-light">Status</label>
+            <div class="radio inline">
+                <input type="radio" id="radio-4" name="status" value="Complete" >
+                <label for="radio-4" class="radio-label">Complete</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-5" name="status" value="Incomplete" >
+                <label for="radio-5" class="radio-label">Incomplete</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn text-dark update">Save</button>
+        </div>
+
+    </div>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
