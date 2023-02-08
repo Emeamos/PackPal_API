@@ -13,7 +13,7 @@ const app = express();
 app.use(cors());
 
 
-dotenv.config( { path : '.env'} );
+dotenv.config();
 dbConnect();
 // log requests
 app.use(morgan('tiny'));
