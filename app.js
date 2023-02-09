@@ -31,5 +31,5 @@ app.use(cors({credentials: true, origin: 'http://127.0.0.1:7007'}));
 //middleware
 
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 7007
 app.listen(PORT,console.log(`Server is running at ${PORT}`))
