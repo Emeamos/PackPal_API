@@ -23,7 +23,7 @@ export const userRegisterController = async(req, res)=>{
             firstname,
             lastname,
             email,
-            password: passwordhash,
+            password:passwordhash,
             gender,
         })
         res.json({
