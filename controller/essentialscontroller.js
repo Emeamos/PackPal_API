@@ -38,8 +38,7 @@ export const deleteEssential = async (req, res) => {
   
       if (deletedEssential) {
         return res.status(200).json({
-          status: 'Essential deleted successfully',
-          data: { deletedEssential },
+          status: 'Essential deleted successfully'
         })
       } else {
         res.status(404).json({
