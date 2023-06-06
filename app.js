@@ -4,8 +4,8 @@ import dbConnect from "./config/dbConnect.js";
 import userRoute from "./routes/userroute.js";
 import bodyparser from "body-parser";
 import morgan from "morgan";
-import taskRoute from "./routes/taskroute.js";
 import cors from "cors";
+import essentialsRoute from "./routes/essentialsroute.js";
 dotenv.config({path:'./.env'});
 
 
@@ -24,7 +24,7 @@ app.use(bodyparser.urlencoded({ extended : true}))
 
 
 app.use("/api/v1/users", userRoute);
-app.use("/api/v1/task", taskRoute);
+app.use("/api/v1/essentials", essentialsRoute);
 
 app.use(cors({credentials: true, origin: 'http://127.0.0.1:7007'}));
 

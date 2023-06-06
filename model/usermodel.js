@@ -2,13 +2,9 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
 
-    firstname: {
+    name: {
         type: String,
         required:[true, "firstname is needed"]
-    },
-    lastname:{
-        type: String,
-        required:[true, "lastname is needed"]
     },
     email:{
         type: String,
@@ -17,11 +13,6 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required:[true, "password is needed"]
-    },
-    gender : {
-        type : String,
-        //required: true,
-        Enum:["male","female"]
     },
 
 })
