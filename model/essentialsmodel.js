@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const essentialsSchema = new mongoose.Schema;({
     essentials:{
         type: String,
-        required: [true,"task is needed"]
+        required: [true,"essential is needed"]
     },
     // status:{
     //     type : String,

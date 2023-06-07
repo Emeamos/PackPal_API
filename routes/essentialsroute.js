@@ -6,7 +6,7 @@ const essentialsRoute = express.Router();
 
 essentialsRoute.post("/add", isLogin,addEssentialController )
 essentialsRoute.put("/:id", isLogin,updateEssential )
-essentialsRoute.get("/all", getAllEssentialController)
+essentialsRoute.get("/all",isLogin, getAllEssentialController)
 essentialsRoute.delete("/:id", deleteEssential)
 essentialsRoute.get("/:id", getEssential)
 

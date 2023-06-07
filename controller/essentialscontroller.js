@@ -24,9 +24,9 @@ export const addEssentialController = async(req, res)=> {
 
 export const getAllEssentialController = async (req, res) => {
   try {
-    const courses = await essential.find()
+    const getEssentials = await essential.find()
 
-    res.status(200).json(courses)
+    res.status(200).json({status:"success", data: getEssentials})
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
