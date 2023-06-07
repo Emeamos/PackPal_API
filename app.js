@@ -22,10 +22,6 @@ app.use(express.json());
 
 app.use(bodyparser.urlencoded({ extended : true}))
 
-
-app.use("/api/v1/users", userRoute);
-app.use("/api/v1/essentials", essentialsRoute);
-
 app.use(
     cors({
       credentials: true,
@@ -35,7 +31,8 @@ app.use(
     })
   );
 
-//middleware
+  app.use("/api/v1/users", userRoute);
+  app.use("/api/v1/essentials", essentialsRoute);
 
 
 const PORT = process.env.PORT || 7007
