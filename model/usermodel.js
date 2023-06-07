@@ -14,12 +14,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required:[true, "password is needed"]
     },
-    essential: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "essential",
-        },
-      ],
 
 })
 
