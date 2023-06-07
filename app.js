@@ -26,12 +26,7 @@ app.use(bodyparser.urlencoded({ extended : true}))
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/essentials", essentialsRoute);
 
-const corsOptions = {
-    credentials: true,
-    origin: '*',
-  };
-  
-app.use(cors(corsOptions));
+app.use(cors({origin: 'http://localhost:5173'}));
 
 //middleware
 
