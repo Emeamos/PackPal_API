@@ -16,11 +16,6 @@ const app = express();
 
 dbConnect();
 // log requests
-app.use(morgan('tiny'));
-
-app.use(express.json());
-
-app.use(bodyparser.urlencoded({ extended : true}))
 
 app.use(
     cors({
@@ -30,6 +25,12 @@ app.use(
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
     })
   );
+
+app.use(morgan('tiny'));
+
+app.use(express.json());
+
+app.use(bodyparser.urlencoded({ extended : true}))
 
   app.use("/api/v1/users", userRoute);
   app.use("/api/v1/essentials", essentialsRoute);
