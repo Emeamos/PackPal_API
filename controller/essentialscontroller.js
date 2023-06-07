@@ -25,8 +25,9 @@ export const addEssentialController = async(req, res)=> {
 export const getAllEssentialController = async (req, res) => {
   try {
     const getEssentials = await essential.find()
+    const userEssential = getEssentials.filter(u => u.user == req.userAuth)
 
-    res.status(200).json({status:"success", data: getEssentials})
+    res.status(200).json({status:"success", data: userEssential})
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -75,12 +76,13 @@ export const updateEssential = async (req, res) => {
 export const getEssential = async (req, res) => {
     try {
       const foundEssential = await essential.findById(req.params.id)
+      const userEssential = await foundEssential.filter(u => u.user == req.userAuth)
   
       if (!foundEssential) {
         return res.status(404).json({ message: 'Essential not found' })
       }
   
-      res.status(200).json(foundEssential)
+      res.status(200).json({status: "success", data: userEssential})
     } catch (error) {
       res.status(500).json({ message: error.message })
     }
