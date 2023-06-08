@@ -1,5 +1,5 @@
 import express from "express"
-import { addEssentialController, deleteEssential, getAllEssentialController, getEssential, updateEssential } from "../controller/essentialscontroller.js";
+import { addEssentialController, deleteEssential, getAllEssentialController, updateEssential } from "../controller/essentialscontroller.js";
 import { isLogin } from "../middleware/isLogin.js";
 
 const essentialsRoute = express.Router();

@@ -77,24 +77,24 @@ export const updateEssential = async (req, res) => {
     }
 }
 
-export const getEssential = async (req, res) => {
-    try {
-      const foundEssential = await essential.findById(req.params.id);
+// export const getEssential = async (req, res) => {
+//     try {
+//       const foundEssential = await essential.findById(req.params.id);
   
-      if (!foundEssential) {
-        return res.status(404).json({ message: 'Essential not found' });
-      }
+//       if (!foundEssential) {
+//         return res.status(404).json({ message: 'Essential not found' });
+//       }
       
-      if (foundEssential.user !== req.userAuth) {
-        return res.status(403).json({ message: 'Unauthorized access' });
-      }
+//       if (foundEssential.user !== req.userAuth) {
+//         return res.status(403).json({ message: 'Unauthorized access' });
+//       }
   
-      res.status(200).json({
-        status: 'success',
-        data: foundEssential,
-      });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };
+//       res.status(200).json({
+//         status: 'success',
+//         data: foundEssential,
+//       });
+//     } catch (error) {
+//       res.status(500).json({ message: error.message });
+//     }
+//   };
   
