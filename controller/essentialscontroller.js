@@ -10,6 +10,7 @@ export const addEssentialController = async(req, res)=> {
             user: req.userAuth
         })
         await addEssentials.save();
+        console.log(req.userAuth);
 
         res.json({
             status:"success",
@@ -24,12 +25,12 @@ export const addEssentialController = async(req, res)=> {
 
 export const getAllEssentialController = async (req, res) => {
   try {
-    const getEssentials = await essential.find()
-    const userEssential = getEssentials.filter(u => u.user == req.userAuth)
 
+    const getEssentials = await essential.find(req.userAuth)
+    
     res.json({
         status: "success",
-        data: userEssential
+        data: getEssentials
     })
   } catch (error) {
     res.status(500).json({ message: error.message })
