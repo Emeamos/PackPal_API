@@ -80,70 +80,76 @@ export const userLoginController = async (req, res) => {
     }
   };
 
-export const getUserController = async(req, res)=>{
-    const {id} = req.params
-    try {
-        //const token = obtainTokenFromHeader(req);
-        const foundUser = await User.findById(id);
-        if (foundUser){
-        res.json({
-            status:"success",
-            data: foundUser
-        })
-    }else {
-        res.json({
-            status: "success",
-            message: foundUser
-        });
-    }
-    } catch (error) {
-        res.json(error.message)
-    }
-}
-export const getAllUserController = async(req, res) => {
-    const allUsers = await User.find()
+  export const getUser = async(req, res) => {
     try{
-        res.json({
-            status: "success",
-            data: {allUsers}
-        });
-    }catch(error){
+        const foundUser = await User.findById(req.userAuth);
+        if(foundUser){
+            const { name, username, email } = foundUser;
+            res.json({
+                status: "Success",
+                data: {
+                    name,
+                    username,
+                    email
+                }
+            });
+        } else {
+            res.json({
+                status: "Success",
+                message: "User does not exist"
+            });
+        }
+    } catch(error){
         res.json(error.message)
     }
-}
-export const deleteUserController =async(req, res)=>{
-    try {
-        res.json({
-            status:"success",
-            data:"user deleted successfully"
-        })
-    } catch (error) {
-        res.json(error.message)
-    }
-}
+  }
 
-export const updateUserController = async(req, res)=>{
-    
+  export const deleteUser = async (req, res) => {
     try {
-        if(!req.body){
-            return res
-                .status(400)
-                .send({ message : "updated Data can not be empty"})
-        }else{
+      const deletedUser = await User.findByIdAndDelete(req.userAuth);
+  
+      if (deletedUser) {
         res.json({
-            status:"success",
-            data:"user updated successfully"
-         })}
-         const id = req.params.id;
-        User.findByIdAndUpdate(id, req.body, { useFindAndModify: false})
-        .then(data => {
-            if(!data){
-                res.status(404).send({ message : `Cannot Update user with ${id}. Maybe user not found!`})
-            }else{
-                res.send(data)
-            }
-        })
+          status: "Success",
+          message: "User deleted successfully"
+        });
+      } else {
+        res.json({
+          status: "Success",
+          message: "User does not exist"
+        });
+      }
     } catch (error) {
-        res.json(error.message)
+      res.json(error.message);
     }
-}
+  };
+
+export const updateUserProfile = async (req, res) => {
+    const { name, username, oldPassword, newPassword } = req.body;
+    try {
+      const user = await Reg.findById(req.userAuth);
+      if (!user) {
+        return res.json({ status: "error", message: "User not found" });
+      }
+      if (user.password !== oldPassword) {
+        return res.json({ status: "error", message: "Invalid old password" });
+      }
+      user.name = name;
+      user.username = username;
+      user.password = newPassword;
+      await user.save();
+      res.json({
+        status: "success",
+        message: "Profile updated successfully",
+        data: {
+          user,
+        },
+      });
+    } catch (error) {
+      res.json({
+        status: "error",
+        message: error.message,
+      });
+    }
+  };
+  
