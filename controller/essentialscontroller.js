@@ -6,7 +6,7 @@ export const addEssentialController = async(req, res)=> {
     console.log(req.body);
     try {
         const addEssentials = new essential({
-            essentials,
+            essentials:essentials,
             user: req.userAuth
         })
         await addEssentials.save();
