@@ -1,5 +1,5 @@
-
 import essential from "../model/essentialsmodel.js";
+import User from "../model/usermodel.js";
 
 export const addEssentialController = async(req, res)=> {
     const {essentials} = req.body;
@@ -27,7 +27,10 @@ export const getAllEssentialController = async (req, res) => {
     const getEssentials = await essential.find()
     const userEssential = getEssentials.filter(u => u.user == req.userAuth)
 
-    res.status(200).json({status:"success", data: userEssential})
+    res.json({
+        status: "success",
+        data: userEssential
+    })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
