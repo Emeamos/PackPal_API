@@ -7,8 +7,8 @@ const essentialsRoute = express.Router();
 essentialsRoute.post("/add", isLogin,addEssentialController )
 essentialsRoute.put("/:id", isLogin,updateEssential )
 essentialsRoute.get("/all",isLogin, getAllEssentialController)
-essentialsRoute.delete("/:id", deleteEssential)
-essentialsRoute.get("/:id", getEssential)
+essentialsRoute.delete("/:id",isLogin, deleteEssential)
+
 
 
 
