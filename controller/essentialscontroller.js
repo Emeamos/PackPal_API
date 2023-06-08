@@ -25,8 +25,8 @@ export const addEssentialController = async(req, res)=> {
 
 export const getAllEssentialController = async (req, res) => {
   try {
-
-    const getEssentials = await essential.find(req.userAuth)
+    console.log(req.userAuth)
+    const getEssentials = await essential.find({user:req.userAuth})
     
     res.json({
         status: "success",
@@ -79,14 +79,22 @@ export const updateEssential = async (req, res) => {
 
 export const getEssential = async (req, res) => {
     try {
-      const foundEssential = await essential.findById(req.params.id)
+      const foundEssential = await essential.findById(req.params.id);
   
       if (!foundEssential) {
-        return res.status(404).json({ message: 'Essential not found' })
+        return res.status(404).json({ message: 'Essential not found' });
       }
-      const userEssential = await foundEssential.filter(u => u.user == req.userAuth)
-      res.status(200).json({status: "success", data: userEssential})
+      
+      if (foundEssential.user !== req.userAuth) {
+        return res.status(403).json({ message: 'Unauthorized access' });
+      }
+  
+      res.status(200).json({
+        status: 'success',
+        data: foundEssential,
+      });
     } catch (error) {
-      res.status(500).json({ message: error.message })
+      res.status(500).json({ message: error.message });
     }
-}
+  };
+  
