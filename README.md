@@ -23,7 +23,11 @@ The following endpoints are available on the API:
 - `PUT /api/v1/essentials/:id`: user updates essentials.
 
 ## Documentation
-The Project is well documented on Postman. The Publication link is blog post documentation on postman link. [Click the link to view the documentation](https://documenter.getpostman.com/view/24145860/2s93sdYXKF).
+The Project is well documented on Postman. 
+
+This document provides a comprehensive guide to an API for user registration, login, and authentication using JSON Web Tokens (JWT). The API allows users to securely register an account, authenticate themselves with the provided credentials, and obtain a JWT token for subsequent authorized requests and perform CRUD operations.
+
+The Publication link is blog post documentation on postman link. [Click the link to view the documentation](https://documenter.getpostman.com/view/24145860/2s93sdYXKF).
 
 
 ## Deployment
